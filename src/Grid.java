@@ -73,13 +73,23 @@ public class Grid {
 
     public void Print()
     {
+        //Values
+        System.out.println("-----------------");
+        System.out.println("M: "+ MineAmount);
+        System.out.println("-----------------");
+
+        //Map
         for(int x = 0; x < GridSize; x++)
         {
             //Coordinates
             System.out.print(x + "| ");
             for(int i = 0; i < GridSize; i++)
             {
-                if (!MineMap[x][i].getSelected())
+                if (MineMap[x][i].getFlagged())
+                {
+                    System.out.print("F" + " ");
+                }
+                else if (!MineMap[x][i].getSelected())
                 {
                     System.out.print("#" + " ");
                 }
@@ -111,7 +121,7 @@ public class Grid {
         {
             System.out.print(i + " ");
         }
-        System.out.print("\n");
+        System.out.println("\n");
     }
 
     public boolean GameOver()
@@ -119,21 +129,22 @@ public class Grid {
         return GameOver;
     }
 
+    public void Flag(int X, int Y)
+    {
+        MineMap[X][Y].setFlagged();
+    }
+
     public void UserInput(int X, int Y)
     {
         //Game Over
         if (MineMap[X][Y].getMine())
         {
+            MineMap[X][Y].setSelected();
             GameOver = true;
             return;
         }
 
-        MineMap[X][Y].setSelected();
-
-        CheckValue(X-1,Y);
-        CheckValue(X+1,Y);
-        CheckValue(X,Y+1);
-        CheckValue(X,Y-1);
+        CheckValue(X,Y);
     }
 
     private void CheckValue(int X, int Y)
@@ -146,6 +157,10 @@ public class Grid {
         {
             return;
         }
+        else if (MineMap[X][Y].getSelected())
+        {
+            return;
+        }
 
         if (!MineMap[X][Y].getMine())
         {
@@ -154,11 +169,12 @@ public class Grid {
 
         if (MineMap[X][Y].getValue() == '0')
         {
-            //CheckValue(X-1,Y);
-            //CheckValue(X+1,Y);
-            //CheckValue(X,Y+1);
-            //CheckValue(X,Y-1);
+            CheckValue(X-1,Y);
+            CheckValue(X+1,Y);
+            CheckValue(X,Y+1);
+            CheckValue(X,Y-1);
         }
+
     }
 
 }

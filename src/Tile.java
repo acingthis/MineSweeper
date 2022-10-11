@@ -42,4 +42,14 @@ public class Tile {
     {
         this.Value = Value;
     }
+
+    public void setFlagged()
+    {
+        this.Flagged = true;
+    }
+
+    public boolean getFlagged()
+    {
+        return Flagged;
+    }
 }
