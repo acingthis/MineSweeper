@@ -74,9 +74,9 @@ public class Grid {
     public void Print()
     {
         //Values
-        System.out.println("-----------------");
+        System.out.println("---------------------");
         System.out.println("M: "+ MineAmount);
-        System.out.println("-----------------");
+        System.out.println("---------------------");
 
         //Map
         for(int x = 0; x < GridSize; x++)
@@ -136,6 +136,11 @@ public class Grid {
 
     public void UserInput(int X, int Y)
     {
+        if(MineMap[X][Y].getFlagged())
+        {
+            System.out.println("You choose flagged tile. Unflag the tile by flagging it again");
+            return;
+        }
         //Game Over
         if (MineMap[X][Y].getMine())
         {

@@ -45,7 +45,14 @@ public class Tile {
 
     public void setFlagged()
     {
-        this.Flagged = true;
+        if (Flagged)
+        {
+            this.Flagged = false;
+        }
+        else
+        {
+            this.Flagged = true;
+        }
     }
 
     public boolean getFlagged()
