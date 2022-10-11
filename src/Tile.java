@@ -18,9 +18,9 @@ public class Tile {
         return selected;
     }
 
-    public void setSelected(boolean select)
+    public void setSelected()
     {
-        selected = select;
+        selected = true;
     }
 
     public boolean getMine()

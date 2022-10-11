@@ -36,7 +36,7 @@ public class Main {
             }
             while(X < 0 && Y < 0);
 
-            Map.UserInput(X,Y);
+            Map.UserInput(Y,X);
 
 
             if (Map.GameOver())

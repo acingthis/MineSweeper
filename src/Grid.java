@@ -128,7 +128,37 @@ public class Grid {
             return;
         }
 
+        MineMap[X][Y].setSelected();
 
+        CheckValue(X-1,Y);
+        CheckValue(X+1,Y);
+        CheckValue(X,Y+1);
+        CheckValue(X,Y-1);
+    }
+
+    private void CheckValue(int X, int Y)
+    {
+        if(X < 0 || X >= GridSize)
+        {
+            return;
+        }
+        else if (Y < 0 || Y >= GridSize)
+        {
+            return;
+        }
+
+        if (!MineMap[X][Y].getMine())
+        {
+            MineMap[X][Y].setSelected();
+        }
+
+        if (MineMap[X][Y].getValue() == '0')
+        {
+            //CheckValue(X-1,Y);
+            //CheckValue(X+1,Y);
+            //CheckValue(X,Y+1);
+            //CheckValue(X,Y-1);
+        }
     }
 
 }
