@@ -4,14 +4,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int GridSize = 10;
+        int GridSize = 20;
 
         Grid Map = new Grid(GridSize);
 
         boolean GameOver = false;
 
         Scanner Scan = new Scanner(System.in);
-        boolean Flag = false;
+        boolean Flag;
 
         do {
             Map.Print();

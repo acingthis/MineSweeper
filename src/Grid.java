@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class Grid {
 
     Tile[][] MineMap;
@@ -82,7 +84,15 @@ public class Grid {
         for(int x = 0; x < GridSize; x++)
         {
             //Coordinates
-            System.out.print(x + "| ");
+            if(x >= 10)
+            {
+                System.out.print(x + "| ");
+            }
+            else
+            {
+                System.out.print("0" + x + "| ");
+            }
+
             for(int i = 0; i < GridSize; i++)
             {
                 if (MineMap[x][i].getFlagged())
@@ -110,12 +120,13 @@ public class Grid {
 
 
         //Coordinates outline
-        System.out.print("   ");
+        System.out.print("    ");
         for(int i = 0; i < GridSize; i++)
         {
             System.out.print("- ");
         }
-        System.out.print("\n   ");
+
+        System.out.print("\n    ");
         //Grid values
         for(int i = 0; i < GridSize; i++)
         {
