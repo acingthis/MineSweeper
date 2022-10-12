@@ -216,6 +216,10 @@ public class Grid {
         {
             return;
         }
+        else if (MineMap[X][Y].getFlagged())
+        {
+            return;
+        }
 
         if (!MineMap[X][Y].getMine())
         {
