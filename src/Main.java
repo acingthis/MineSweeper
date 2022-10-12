@@ -9,7 +9,6 @@ public class Main {
         Grid Map = new Grid(GridSize);
 
         boolean GameOver = false;
-        boolean Win = false;
 
         Scanner Scan = new Scanner(System.in);
         boolean Flag;
@@ -42,8 +41,16 @@ public class Main {
                 }
                 catch (Exception e)
                 {
-                    System.out.println("There has been an issue please try again");
-                    return;
+                    System.out.println("\nThere has been an issue please try again\n");
+                    X = -1;
+                    Y = -1;
+                }
+
+                if (Y > GridSize || X > GridSize)
+                {
+                    System.out.println("An index is out of bounds, the grid goes from 0-" + (GridSize-1) + "\n");
+                    X = -1;
+                    Y = -1;
                 }
             }
             while(X < 0 && Y < 0);

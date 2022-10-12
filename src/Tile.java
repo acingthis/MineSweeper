@@ -45,8 +45,5 @@ public class Tile {
 
     public void setFlagged() { this.Flagged = !this.Flagged; }
 
-    public boolean getFlagged()
-    {
-        return Flagged;
-    }
+    public boolean getFlagged() { return Flagged; }
 }

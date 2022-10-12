@@ -80,7 +80,7 @@ public class Grid {
     {
         //Values
         System.out.println("------------------------");
-        System.out.println("Mines: "+ MineAmount + "  Score: " + Score);
+        System.out.println("Mines: "+ MineAmount + "  Score: " + Score + "/" + ((GridSize * GridSize) - MineAmount));
         System.out.println("------------------------");
 
         //Map
