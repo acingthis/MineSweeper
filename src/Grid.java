@@ -79,9 +79,11 @@ public class Grid {
     public void Print()
     {
         //Values
+        System.out.print(ConsoleColor.BLUE);
         System.out.println("------------------------");
         System.out.println("Mines: "+ MineAmount + "  Score: " + Score + "/" + ((GridSize * GridSize) - MineAmount));
         System.out.println("------------------------");
+        System.out.print(ConsoleColor.RESET);
 
         //Map
         for(int x = 0; x < GridSize; x++)
@@ -107,7 +109,7 @@ public class Grid {
             {
                 if (MineMap[x][i].getFlagged())
                 {
-                    System.out.print("F" + " ");
+                    System.out.print(ConsoleColor.BLUE +"F" + " " + ConsoleColor.RESET);
                 }
                 else if (!MineMap[x][i].getSelected())
                 {
@@ -117,11 +119,11 @@ public class Grid {
                 {
                     if (MineMap[x][i].getMine())
                     {
-                        System.out.print("M" + " ");
+                        System.out.print(ConsoleColor.RED + "M" + " " + ConsoleColor.RESET);
                     }
                     else
                     {
-                        System.out.print(MineMap[x][i].getValue() + " ");
+                        System.out.print(ConsoleColor.GREEN + MineMap[x][i].getValue() + " " + ConsoleColor.RESET);
                     }
                 }
             }

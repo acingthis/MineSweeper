@@ -22,6 +22,7 @@ public class Main {
             do
             {
                 try {
+
                     System.out.println("Do you wish to flag something?");
                     System.out.print("> ");
                     String Flagging = Scan.nextLine();
@@ -41,9 +42,11 @@ public class Main {
                 }
                 catch (Exception e)
                 {
+                    System.out.println(ConsoleColor.RED);
                     System.out.println("\nThere has been an issue please try again\n");
                     X = -1;
                     Y = -1;
+                    System.out.println(ConsoleColor.RESET);
                 }
 
                 if (Y > GridSize || X > GridSize)
@@ -66,8 +69,12 @@ public class Main {
 
             if (Map.GameOver())
             {
+
+                System.out.print(ConsoleColor.RED);
                 System.out.println("\nGAME OVER\n");
+                System.out.print(ConsoleColor.RESET);
                 Map.Print();
+                System.out.print(ConsoleColor.RED);
                 System.out.println("\nGAME OVER\n");
                 System.out.println("     _.-^^---....,,--       \n" +
                                     " _--                 ---_  \n" +
@@ -81,12 +88,16 @@ public class Main {
                                     "          | ;  :|     \n" +
                                     " _____.,-#%&$@%#&#~,._____");
                 System.out.println("\nGAME OVER\n");
+                System.out.print(ConsoleColor.RESET);
                 GameOver = true;
             }
             else if (Map.Win())
             {
+                System.out.print(ConsoleColor.GREEN);
                 System.out.println("\nYOU WIN\n");
                 Map.Print();
+                System.out.print(ConsoleColor.RESET);
+                System.out.print(ConsoleColor.GREEN);
                 System.out.println("\nYOU WIN\n");
                 System.out.println( "                                 _       \n" +
                                     "                                | |      \n" +
@@ -97,6 +108,7 @@ public class Main {
                                     "                  __/ |                  \n" +
                                     "                 |___/ ");
                 System.out.println("\nYOU WIN\n");
+                System.out.print(ConsoleColor.RESET);
                 break;
             }
         }
