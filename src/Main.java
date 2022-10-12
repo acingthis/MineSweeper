@@ -17,8 +17,8 @@ public class Main {
             Map.Print();
 
             Flag = false;
-            int X = -1;
-            int Y = -1;
+            int X;
+            int Y;
             do
             {
                 try {
@@ -107,6 +107,8 @@ public class Main {
                                     " \\___\\___/|_| |_|\\__, |_|  \\__,_|\\__|___/\n" +
                                     "                  __/ |                  \n" +
                                     "                 |___/ ");
+                System.out.println("\nYOU WIN\n");
+                System.out.println("Score: " + Map.Score + " Moves Made: " + Map.NumOfMoves);
                 System.out.println("\nYOU WIN\n");
                 System.out.print(ConsoleColor.RESET);
                 break;

@@ -5,7 +5,9 @@ public class Grid {
     Tile[][] MineMap;
     int MineAmount;
     int GridSize;
+
     int Score;
+    int NumOfMoves;
 
     boolean GameOver = false;
     boolean Won = false;
@@ -13,6 +15,7 @@ public class Grid {
     public Grid(int GridSize)
     {
         this.Score = 0;
+        this.NumOfMoves = 0;
         MineMap = new Tile[GridSize][GridSize];
 
         for(int x = 0; x < GridSize; x++)
@@ -66,11 +69,7 @@ public class Grid {
             return;
         }
 
-        if (MineMap[X][Y].getMine())
-        {
-            return;
-        }
-        else
+        if (!MineMap[X][Y].getMine())
         {
             MineMap[X][Y].setValue((char) (1 + (int) MineMap[X][Y].getValue()));
         }
@@ -200,7 +199,7 @@ public class Grid {
     {
         if(MineMap[X][Y].getFlagged())
         {
-            System.out.println("You choose a flagged tile. Unflag the tile by flagging it again");
+            System.out.println("You choose a flagged tile. un-flag the tile by flagging it again");
             return;
         }
         //Game Over
@@ -211,6 +210,7 @@ public class Grid {
             return;
         }
 
+        NumOfMoves++;
         CheckValue(X,Y);
     }
 
