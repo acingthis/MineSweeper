@@ -109,7 +109,14 @@ public class Grid {
             {
                 if (MineMap[x][i].getFlagged())
                 {
-                    System.out.print(ConsoleColor.BLUE +"F" + " " + ConsoleColor.RESET);
+                    if (MineMap[x][i].getSelected())
+                    {
+                        System.out.print(ConsoleColor.GREEN + MineMap[x][i].getValue() + " " + ConsoleColor.RESET);
+                    }
+                    else
+                    {
+                        System.out.print(ConsoleColor.BLUE +"F" + " " + ConsoleColor.RESET);
+                    }
                 }
                 else if (!MineMap[x][i].getSelected())
                 {
