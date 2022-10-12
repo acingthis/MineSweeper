@@ -4,6 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
 
+        UserInput();
+    }
+
+    private static void UserInput()
+    {
         int GridSize = 10;
 
         Grid Map = new Grid(GridSize);
@@ -77,16 +82,16 @@ public class Main {
                 System.out.print(ConsoleColor.RED);
                 System.out.println("\nGAME OVER\n");
                 System.out.println("     _.-^^---....,,--       \n" +
-                                    " _--                 ---_  \n" +
-                                    "<                        >)\n" +
-                                    "|                         | \n" +
-                                    " \\._                   _./  \n" +
-                                    "    ```--. . , ; .--'''       \n" +
-                                    "          | |   |             \n" +
-                                    "       .-=||  | |=-.   \n" +
-                                    "       `-=#$%&%$#=-'   \n" +
-                                    "          | ;  :|     \n" +
-                                    " _____.,-#%&$@%#&#~,._____");
+                        " _--                 ---_  \n" +
+                        "<                        >)\n" +
+                        "|                         | \n" +
+                        " \\._                   _./  \n" +
+                        "    ```--. . , ; .--'''       \n" +
+                        "          | |   |             \n" +
+                        "       .-=||  | |=-.   \n" +
+                        "       `-=#$%&%$#=-'   \n" +
+                        "          | ;  :|     \n" +
+                        " _____.,-#%&$@%#&#~,._____");
                 System.out.println("\nGAME OVER\n");
                 System.out.print(ConsoleColor.RESET);
                 GameOver = true;
@@ -100,13 +105,13 @@ public class Main {
                 System.out.print(ConsoleColor.GREEN);
                 System.out.println("\nYOU WIN\n");
                 System.out.println( "                                 _       \n" +
-                                    "                                | |      \n" +
-                                    "  ___ ___  _ __   __ _ _ __ __ _| |_ ___ \n" +
-                                    " / __/ _ \\| '_ \\ / _` | '__/ _` | __/ __|\n" +
-                                    "| (_| (_) | | | | (_| | | | (_| | |_\\__ \\\n" +
-                                    " \\___\\___/|_| |_|\\__, |_|  \\__,_|\\__|___/\n" +
-                                    "                  __/ |                  \n" +
-                                    "                 |___/ ");
+                        "                                | |      \n" +
+                        "  ___ ___  _ __   __ _ _ __ __ _| |_ ___ \n" +
+                        " / __/ _ \\| '_ \\ / _` | '__/ _` | __/ __|\n" +
+                        "| (_| (_) | | | | (_| | | | (_| | |_\\__ \\\n" +
+                        " \\___\\___/|_| |_|\\__, |_|  \\__,_|\\__|___/\n" +
+                        "                  __/ |                  \n" +
+                        "                 |___/ ");
                 System.out.println("\nYOU WIN\n");
                 System.out.println("Score: " + Map.Score + " Moves Made: " + Map.NumOfMoves);
                 System.out.println("\nYOU WIN\n");
@@ -115,6 +120,31 @@ public class Main {
             }
         }
         while (!GameOver);
+
+        //Scoring
+        FileManager ScoreBoard = new FileManager();
+        ScoreBoard.LeaderBoard();
+        System.out.println("What is your Username?");
+        System.out.print("> ");
+        String Player = Scan.nextLine();
+        ScoreBoard.WriteToFile(Player,Map.NumOfMoves);
+
+        //play again?
+        boolean Play;
+
+        System.out.println("Do you want to play again?");
+        System.out.print("> ");
+        String Again = Scan.nextLine();
+
+        Play = switch (Again.toLowerCase()) {
+            case "yes","y" -> true;
+            default -> false;
+        };
+
+        if (Play)
+        {
+            UserInput();
+        }
     }
 
 }

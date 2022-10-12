@@ -212,6 +212,14 @@ public class Grid {
 
         NumOfMoves++;
         CheckValue(X,Y);
+
+        if(MinesFlagged == MineAmount)
+        {
+            if (Score == (GridSize * GridSize) - MineAmount)
+            {
+                Won = true;
+            }
+        }
     }
 
     private void CheckValue(int X, int Y)
