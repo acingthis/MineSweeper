@@ -184,7 +184,10 @@ public class Grid {
         }
         if(MinesFlagged == MineAmount)
         {
-            Won = true;
+            if (Score == (GridSize * GridSize) - MineAmount)
+            {
+                Won = true;
+            }
         }
     }
 
