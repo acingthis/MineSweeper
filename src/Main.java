@@ -4,11 +4,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int GridSize = 20;
+        int GridSize = 10;
 
         Grid Map = new Grid(GridSize);
 
         boolean GameOver = false;
+        boolean Win = false;
 
         Scanner Scan = new Scanner(System.in);
         boolean Flag;
@@ -74,6 +75,22 @@ public class Main {
                                     " _____.,-#%&$@%#&#~,._____");
                 System.out.println("\nGAME OVER\n");
                 GameOver = true;
+            }
+            else if (Map.Win())
+            {
+                System.out.println("\nYOU WIN\n");
+                Map.Print();
+                System.out.println("\nYOU WIN\n");
+                System.out.println( "                                 _       \n" +
+                                    "                                | |      \n" +
+                                    "  ___ ___  _ __   __ _ _ __ __ _| |_ ___ \n" +
+                                    " / __/ _ \\| '_ \\ / _` | '__/ _` | __/ __|\n" +
+                                    "| (_| (_) | | | | (_| | | | (_| | |_\\__ \\\n" +
+                                    " \\___\\___/|_| |_|\\__, |_|  \\__,_|\\__|___/\n" +
+                                    "                  __/ |                  \n" +
+                                    "                 |___/ ");
+                System.out.println("\nYOU WIN\n");
+                break;
             }
         }
         while (!GameOver);

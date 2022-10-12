@@ -43,17 +43,7 @@ public class Tile {
         this.Value = Value;
     }
 
-    public void setFlagged()
-    {
-        if (Flagged)
-        {
-            this.Flagged = false;
-        }
-        else
-        {
-            this.Flagged = true;
-        }
-    }
+    public void setFlagged() { this.Flagged = !this.Flagged; }
 
     public boolean getFlagged()
     {
