@@ -74,13 +74,13 @@ public class Main {
 
             if (Map.GameOver())
             {
-
+                String LOSE = "GAME OVER";
                 System.out.print(ConsoleColor.RED);
-                System.out.println("\nGAME OVER\n");
+                System.out.println("\n" + LOSE + "\n");
                 System.out.print(ConsoleColor.RESET);
                 Map.Print();
                 System.out.print(ConsoleColor.RED);
-                System.out.println("\nGAME OVER\n");
+                System.out.println("\n" + LOSE + "\n");
                 System.out.println( "     _.-^^---....,,--       \n" +
                                     " _--                 ---_  \n" +
                                     "<                        >)\n" +
@@ -92,18 +92,19 @@ public class Main {
                                     "       `-=#$%&%$#=-'   \n" +
                                     "          | ;  :|     \n" +
                                     " _____.,-#%&$@%#&#~,._____");
-                System.out.println("\nGAME OVER\n");
+                System.out.println("\n" + LOSE + "\n");
                 System.out.print(ConsoleColor.RESET);
                 GameOver = true;
             }
             else if (Map.Win())
             {
+                String WINNING = "YOU WIN";
                 System.out.print(ConsoleColor.GREEN);
-                System.out.println("\nYOU WIN\n");
+                System.out.println("\n" + WINNING + "\n");
                 Map.Print();
                 System.out.print(ConsoleColor.RESET);
                 System.out.print(ConsoleColor.GREEN);
-                System.out.println("\nYOU WIN\n");
+                System.out.println("\n" + WINNING + "\n");
                 System.out.println( "                                 _       \n" +
                                     "                                | |      \n" +
                                     "  ___ ___  _ __   __ _ _ __ __ _| |_ ___ \n" +
@@ -112,9 +113,9 @@ public class Main {
                                     " \\___\\___/|_| |_|\\__, |_|  \\__,_|\\__|___/\n" +
                                     "                  __/ |                  \n" +
                                     "                 |___/ ");
-                System.out.println("\nYOU WIN\n");
+                System.out.println("\n" + WINNING + "\n");
                 System.out.println("Your score: " + Map.Score + " Moves Made: " + Map.NumOfMoves);
-                System.out.println("\nYOU WIN\n");
+                System.out.println("\n" + WINNING + "\n");
                 System.out.print(ConsoleColor.RESET);
                 break;
             }

@@ -27,11 +27,9 @@ public class FileManager {
 
     public final void WriteToFile(String UserName, int Moves)
     {
-        try {
+        try(FileWriter ScoreBoard = new FileWriter(fileName)) {
             String Board = PlaceScore(UserName,Moves+1);
-            FileWriter ScoreBoard = new FileWriter(fileName);
             ScoreBoard.write(Board);
-            ScoreBoard.close();
         } catch (IOException e) {
             System.out.println("ERROR writing to Scoreboard");
             e.printStackTrace();

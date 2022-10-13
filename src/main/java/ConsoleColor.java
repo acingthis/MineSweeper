@@ -1,4 +1,5 @@
 public class ConsoleColor {
+    private ConsoleColor() { }
     public static final String RESET = "\033[0m";
 
     // RGB
