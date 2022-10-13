@@ -116,7 +116,8 @@ public class FileManager {
             e.printStackTrace();
         }
 
-        String Board = "Player : Moves";
+        String Board =  "Player : Moves\n" +
+                        "---------------";
         for (String score:Scores)
         {
             Board = Board + score + "\n";
