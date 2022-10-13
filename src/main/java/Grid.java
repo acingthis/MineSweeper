@@ -206,12 +206,9 @@ public class Grid {
         NumOfMoves++;
         CheckValue(X,Y);
 
-        if(MinesFlagged == MineAmount)
+        if(MinesFlagged == MineAmount && Score == (GridSize * GridSize) - MineAmount)
         {
-            if (Score == (GridSize * GridSize) - MineAmount)
-            {
-                Won = true;
-            }
+            Won = true;
         }
     }
 
