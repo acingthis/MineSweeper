@@ -35,6 +35,8 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("ERROR writing to Scoreboard");
             e.printStackTrace();
+        }finally {
+            System.out.println("Scoreboard Updated");
         }
     }
 
