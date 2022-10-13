@@ -167,6 +167,7 @@ public class Grid {
     {
         return GameOver;
     }
+    public boolean Win() { return Won; }
 
     int MinesFlagged = 0;
 
@@ -181,11 +182,6 @@ public class Grid {
         {
             Won = true;
         }
-    }
-
-    public boolean Win()
-    {
-        return Won;
     }
 
     public void UserInput(int X, int Y)
