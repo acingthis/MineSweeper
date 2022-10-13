@@ -117,7 +117,7 @@ public class FileManager {
         }
 
         String Board =  "Player : Moves\n" +
-                        "---------------";
+                        "---------------\n";
         for (String score:Scores)
         {
             Board = Board + score + "\n";

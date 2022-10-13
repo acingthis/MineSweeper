@@ -121,10 +121,11 @@ public class Main {
         }
         while (!GameOver);
 
-
         //Scoring
         FileManager ScoreBoard = new FileManager();
-        ScoreBoard.LeaderBoard();
+        System.out.print(ConsoleColor.BLUE);
+        System.out.println(ScoreBoard.LeaderBoard());
+        System.out.print(ConsoleColor.RESET);
         if (Map.Win())
         {
             System.out.println("What is your Username?");
