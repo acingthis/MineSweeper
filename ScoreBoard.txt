@@ -1,0 +1,10 @@
+Diz : 3
+ROB : 3
+Diz : 4
+Damn : 6
+Fun : 6
+some : 7
+ffs : 8
+this : 11
+ROB : 11
+Bro : 12

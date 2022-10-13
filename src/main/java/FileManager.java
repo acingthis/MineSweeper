@@ -7,28 +7,33 @@ import java.util.Scanner;
 
 public class FileManager {
 
+    String fileName = "ScoreBoard.txt";
+
     public FileManager()
     {
         try {
-            File ScoreBoard = new File("ScoreBoard.txt");
-            ScoreBoard.createNewFile();
+            File ScoreBoard = new File(fileName);
+            if (ScoreBoard.createNewFile())
+            {
+                System.out.println("Scoreboard has been made");
+            }
         }
         catch (IOException e)
         {
-            System.out.println("An error occurred.");
+            System.out.println("ERROR making Scoreboard file");
             e.printStackTrace();
         }
     }
 
-    public void WriteToFile(String UserName, int Moves)
+    public final void WriteToFile(String UserName, int Moves)
     {
         try {
-            String Board = PlaceScore(UserName,Moves);
-            FileWriter ScoreBoard = new FileWriter("ScoreBoard.txt");
+            String Board = PlaceScore(UserName,Moves+1);
+            FileWriter ScoreBoard = new FileWriter(fileName);
             ScoreBoard.write(Board);
             ScoreBoard.close();
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            System.out.println("ERROR writing to Scoreboard");
             e.printStackTrace();
         }
     }
@@ -39,7 +44,7 @@ public class FileManager {
         int Counter = 0;
         try
         {
-            File ScoreBoard = new File("ScoreBoard.txt");
+            File ScoreBoard = new File(fileName);
             Scanner myReader = new Scanner(ScoreBoard);
             while (myReader.hasNextLine())
             {
@@ -51,7 +56,7 @@ public class FileManager {
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("An error occurred.");
+            System.out.println("ERROR problem reading scoreboard file");
             e.printStackTrace();
         }
 
@@ -67,16 +72,13 @@ public class FileManager {
                 break;
             }
         }
-        for (int i = x+1; x < Scores.length-1;x++)
+        for (int i = x; i < Scores.length-1;i++)
         {
             if (!Objects.equals(Replace, ""))
             {
-                if (i >= Scores.length -2)
-                {
-                    Store = Scores[i];
-                    Scores[i] = Replace;
-                    Replace = Store;
-                }
+                Store = Scores[i];
+                Scores[i] = Replace;
+                Replace = Store;
             }
         }
 
@@ -99,7 +101,7 @@ public class FileManager {
         int Counter = 0;
         try
         {
-            File ScoreBoard = new File("ScoreBoard.txt");
+            File ScoreBoard = new File(fileName);
             Scanner myReader = new Scanner(ScoreBoard);
             while (myReader.hasNextLine())
             {
@@ -112,7 +114,7 @@ public class FileManager {
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("An error occurred.");
+            System.out.println("ERROR reading scoreboard");
             e.printStackTrace();
         }
 
@@ -120,6 +122,10 @@ public class FileManager {
                         "---------------\n";
         for (String score:Scores)
         {
+            if (score == null)
+            {
+                return Board;
+            }
             Board = Board + score + "\n";
         }
 
