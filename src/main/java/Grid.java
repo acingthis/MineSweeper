@@ -60,11 +60,7 @@ public class Grid {
 
     private void CreateNumbers(int X, int Y)
     {
-        if(X < 0 || X >= GridSize)
-        {
-            return;
-        }
-        else if (Y < 0 || Y >= GridSize)
+        if(X < 0 || X >= GridSize || Y < 0 || Y >= GridSize)
         {
             return;
         }
@@ -181,12 +177,9 @@ public class Grid {
         {
             MinesFlagged++;
         }
-        if(MinesFlagged == MineAmount)
+        if(MinesFlagged == MineAmount && Score == (GridSize * GridSize) - MineAmount)
         {
-            if (Score == (GridSize * GridSize) - MineAmount)
-            {
-                Won = true;
-            }
+            Won = true;
         }
     }
 
