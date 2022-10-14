@@ -1,6 +1,7 @@
 package MineSweep;
 
 import java.lang.Math;
+import java.security.SecureRandom;
 
 public class Grid {
 
@@ -34,14 +35,16 @@ public class Grid {
 
     private void CreateMines()
     {
+        SecureRandom rand = new SecureRandom();
+
         for(int i = 0; i < MineAmount; i++)
         {
-            int X = (int)(Math.random() * GridSize);
-            int Y = (int)(Math.random() * GridSize);
+            int X = rand.nextInt(GridSize);
+            int Y = rand.nextInt(GridSize);
             while (MineMap[X][Y].getMine())
             {
-                X = (int)(Math.random() * GridSize);
-                Y = (int)(Math.random() * GridSize);
+                X = rand.nextInt(GridSize);
+                Y = rand.nextInt(GridSize);
             }
             MineMap[X][Y].setMine();
             numberAroundMine(X,Y);

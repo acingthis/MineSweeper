@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a67e4c0a-4a41-4f3f-b096-4a59449c4a4a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MineSweep/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MineSweep/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MineSweep/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MineSweep/Grid.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
