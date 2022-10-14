@@ -213,9 +213,9 @@ public class Grid {
 
     private void checkValue(int X, int Y)
     {
-<span class="pc bpc" id="L216" title="1 of 12 branches missed.">        if(X &lt; 0 || X &gt;= gridSize || Y &lt; 0 || Y &gt;= gridSize || mineMap[X][Y].getSelected() || mineMap[X][Y].getFlagged())</span>
+<span class="pc bpc" id="L216" title="6 of 12 branches missed.">        if(X &lt; 0 || X &gt;= gridSize || Y &lt; 0 || Y &gt;= gridSize || mineMap[X][Y].getSelected() || mineMap[X][Y].getFlagged())</span>
         {
-<span class="fc" id="L218">            return;</span>
+<span class="nc" id="L218">            return;</span>
         }
 
 <span class="pc bpc" id="L221" title="1 of 2 branches missed.">        if (!mineMap[X][Y].getMine())</span>
@@ -224,12 +224,12 @@ public class Grid {
 <span class="fc" id="L224">            Score++;</span>
         }
 
-<span class="fc bfc" id="L227" title="All 2 branches covered.">        if (mineMap[X][Y].getValue() == '0')</span>
+<span class="pc bpc" id="L227" title="1 of 2 branches missed.">        if (mineMap[X][Y].getValue() == '0')</span>
         {
-<span class="fc" id="L229">            checkValue(X-1,Y);</span>
-<span class="fc" id="L230">            checkValue(X+1,Y);</span>
-<span class="fc" id="L231">            checkValue(X,Y+1);</span>
-<span class="fc" id="L232">            checkValue(X,Y-1);</span>
+<span class="nc" id="L229">            checkValue(X-1,Y);</span>
+<span class="nc" id="L230">            checkValue(X+1,Y);</span>
+<span class="nc" id="L231">            checkValue(X,Y+1);</span>
+<span class="nc" id="L232">            checkValue(X,Y-1);</span>
         }
 
 <span class="fc" id="L235">    }</span>

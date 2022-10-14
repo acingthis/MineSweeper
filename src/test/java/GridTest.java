@@ -9,6 +9,8 @@ public class GridTest {
     @Test
     public void testGridCreation()
     {
+        testGrid = new Grid(10);
+
         Assertions.assertEquals(10,testGrid.mineAmount, "The Amount of mines is incorrect");
         Assertions.assertEquals(10,testGrid.gridSize, "The Grid size is incorrect");
         Assertions.assertEquals(0,testGrid.Score, "The Score doesn't start at 0");
