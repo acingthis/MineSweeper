@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a67e4c0a-4a41-4f3f-b096-4a59449c4a4a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/FileManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/MainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MineSweep/FileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MineSweep/FileManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MineSweep/Grid.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MineSweep/Grid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GridTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GridTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/GridTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/GridTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,10 +61,19 @@
       <recent name="C:\Users\Robert\Documents\Work\AutomationTester\Java\Projects\Game\MavenMine\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GridTest">
+  <component name="RunManager" selected="JUnit.FileManagerTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="MavenMine" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MavenMine" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FileManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -80,30 +87,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GridTest.testFlag" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GridTest.testUserInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MavenMine" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="GridTest" />
-      <option name="METHOD_NAME" value="testFlag" />
+      <option name="METHOD_NAME" value="testUserInput" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TileTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest.testUserInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MavenMine" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TileTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TileTest.testSetValue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MavenMine" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TileTest" />
-      <option name="METHOD_NAME" value="testSetValue" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="METHOD_NAME" value="testUserInput" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -111,11 +109,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FileManagerTest" />
+        <item itemvalue="JUnit.MainTest.testUserInput" />
+        <item itemvalue="JUnit.GridTest.testUserInput" />
         <item itemvalue="JUnit.GridTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TileTest" />
-        <item itemvalue="JUnit.GridTest.testFlag" />
-        <item itemvalue="JUnit.TileTest.testSetValue" />
       </list>
     </recent_temporary>
   </component>
