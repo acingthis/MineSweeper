@@ -42,25 +42,7 @@ public class FileManager {
 
     private String PlaceScore(String UserName, int Moves)
     {
-        String[] Scores = new String[10];
-        int Counter = 0;
-        try
-        {
-            File ScoreBoard = new File(fileName);
-            Scanner myReader = new Scanner(ScoreBoard);
-            while (myReader.hasNextLine())
-            {
-                String data = myReader.nextLine();
-                Scores[Counter] = data;
-                Counter++;
-            }
-            myReader.close();
-        }
-        catch (FileNotFoundException e)
-        {
-            System.out.println("ERROR problem reading scoreboard file");
-            e.printStackTrace();
-        }
+        String[] Scores = ReadFile();
 
         String Replace = "";
         String Store = "";
@@ -99,26 +81,7 @@ public class FileManager {
 
     public String LeaderBoard()
     {
-        String[] Scores = new String[10];
-        int Counter = 0;
-        try
-        {
-            File ScoreBoard = new File(fileName);
-            Scanner myReader = new Scanner(ScoreBoard);
-            while (myReader.hasNextLine())
-            {
-                String data = myReader.nextLine();
-                Scores[Counter] = data;
-                Counter++;
-
-            }
-            myReader.close();
-        }
-        catch (FileNotFoundException e)
-        {
-            System.out.println("ERROR reading scoreboard");
-            e.printStackTrace();
-        }
+        String[] Scores = ReadFile();
 
         String Board =  "Player : Moves\n---------------\n";
         for (String score:Scores)
@@ -131,6 +94,31 @@ public class FileManager {
         }
 
         return Board;
+    }
+
+    public String[] ReadFile()
+    {
+        String[] Scores = new String[10];
+        int Counter = 0;
+        try
+        {
+            File ScoreBoard = new File(fileName);
+            Scanner myReader = new Scanner(ScoreBoard);
+            while (myReader.hasNextLine())
+            {
+                String data = myReader.nextLine();
+                Scores[Counter] = data;
+                Counter++;
+            }
+            myReader.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("ERROR problem reading scoreboard file");
+            e.printStackTrace();
+        }
+
+        return Scores;
     }
 
 }

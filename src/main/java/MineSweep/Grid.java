@@ -212,19 +212,7 @@ public class Grid {
 
     private void CheckValue(int X, int Y)
     {
-        if(X < 0 || X >= GridSize)
-        {
-            return;
-        }
-        else if (Y < 0 || Y >= GridSize)
-        {
-            return;
-        }
-        else if (MineMap[X][Y].getSelected())
-        {
-            return;
-        }
-        else if (MineMap[X][Y].getFlagged())
+        if(X < 0 || X >= GridSize || Y < 0 || Y >= GridSize || MineMap[X][Y].getSelected() || MineMap[X][Y].getFlagged())
         {
             return;
         }
