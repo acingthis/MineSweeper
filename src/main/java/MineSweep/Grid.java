@@ -1,16 +1,18 @@
+package MineSweep;
+
 import java.lang.Math;
 
 public class Grid {
 
-    Tile[][] MineMap;
-    int MineAmount;
-    int GridSize;
+    public Tile[][] MineMap;
+    public int MineAmount;
+    public int GridSize;
 
-    int Score;
-    int NumOfMoves;
+    public int Score;
+    public int NumOfMoves;
 
-    boolean GameOver = false;
-    boolean Won = false;
+    public boolean GameOver = false;
+    public boolean Won = false;
 
     public Grid(int GridSize)
     {
@@ -46,7 +48,7 @@ public class Grid {
         }
     }
 
-    private void numberAroundMine(int X, int Y)
+    public void numberAroundMine(int X, int Y)
     {
         CreateNumbers(X-1,Y);
         CreateNumbers(X-1,Y-1);

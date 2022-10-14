@@ -1,3 +1,4 @@
+import MineSweep.*;
 import java.util.Scanner;
 
 public class Main {
@@ -54,7 +55,7 @@ public class Main {
                     System.out.println(ConsoleColor.RESET);
                 }
 
-                if (Y > GridSize || X > GridSize)
+                if (Y >= GridSize || X >= GridSize)
                 {
                     System.out.println("An index is out of bounds, the grid goes from 0-" + (GridSize-1) + "\n");
                     X = -1;

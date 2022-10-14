@@ -1,3 +1,5 @@
+package MineSweep;
+
 public class Tile {
 
     private char Value;
