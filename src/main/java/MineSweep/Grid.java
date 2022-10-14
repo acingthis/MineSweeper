@@ -1,78 +1,76 @@
 package MineSweep;
-
-import java.lang.Math;
 import java.security.SecureRandom;
 
 public class Grid {
 
-    public Tile[][] MineMap;
-    public int MineAmount;
-    public int GridSize;
+    public Tile[][] mineMap;
+    public int mineAmount;
+    public int gridSize;
 
     public int Score;
-    public int NumOfMoves;
+    public int numOfMoves;
 
-    public boolean GameOver = false;
+    public boolean gameOver = false;
     public boolean Won = false;
 
     public Grid(int GridSize)
     {
         this.Score = 0;
-        this.NumOfMoves = 0;
-        MineMap = new Tile[GridSize][GridSize];
+        this.numOfMoves = 0;
+        mineMap = new Tile[GridSize][GridSize];
 
         for(int x = 0; x < GridSize; x++)
         {
             for(int i = 0; i < GridSize; i++)
             {
-                MineMap[x][i] = new Tile();
+                mineMap[x][i] = new Tile();
             }
         }
-        MineAmount = GridSize;
-        this.GridSize = GridSize;
-        CreateMines();
+        mineAmount = GridSize;
+        this.gridSize = GridSize;
+        createMines();
     }
 
-    private void CreateMines()
+    private void createMines()
     {
         SecureRandom rand = new SecureRandom();
 
-        for(int i = 0; i < MineAmount; i++)
+        for(int i = 0; i < mineAmount; i++)
         {
-            int X = rand.nextInt(GridSize);
-            int Y = rand.nextInt(GridSize);
-            while (MineMap[X][Y].getMine())
+            int X = rand.nextInt(gridSize);
+            int Y = rand.nextInt(gridSize);
+            while (mineMap[X][Y].getMine())
             {
-                X = rand.nextInt(GridSize);
-                Y = rand.nextInt(GridSize);
+                X = rand.nextInt(gridSize);
+                Y = rand.nextInt(gridSize);
             }
-            MineMap[X][Y].setMine();
+            mineMap[X][Y].setMine();
             numberAroundMine(X,Y);
         }
     }
 
     public void numberAroundMine(int X, int Y)
     {
-        CreateNumbers(X-1,Y);
-        CreateNumbers(X-1,Y-1);
-        CreateNumbers(X,Y-1);
-        CreateNumbers(X+1,Y-1);
-        CreateNumbers(X+1,Y);
-        CreateNumbers(X+1,Y+1);
-        CreateNumbers(X,Y+1);
-        CreateNumbers(X-1,Y+1);
+        createNumbers(X-1,Y);
+        createNumbers(X-1,Y-1);
+        createNumbers(X,Y-1);
+        createNumbers(X+1,Y-1);
+        createNumbers(X+1,Y);
+        createNumbers(X+1,Y+1);
+        createNumbers(X,Y+1);
+        createNumbers(X-1,Y+1);
     }
 
-    private void CreateNumbers(int X, int Y)
+    private void createNumbers(int X, int Y)
     {
-        if(X < 0 || X >= GridSize || Y < 0 || Y >= GridSize)
+        if(X < 0 || X >= gridSize || Y < 0 || Y >= gridSize)
         {
             return;
         }
 
-        if (!MineMap[X][Y].getMine())
+        if (!mineMap[X][Y].getMine())
         {
-            MineMap[X][Y].setValue((char) (1 + (int) MineMap[X][Y].getValue()));
+            mineMap[X][Y].setValue((char) (1 + (int) mineMap[X][Y].getValue()));
         }
     }
 
@@ -81,12 +79,12 @@ public class Grid {
         //Values
         System.out.print(ConsoleColor.BLUE);
         System.out.println("------------------------");
-        System.out.println("Mines: "+ MineAmount + "  Score: " + Score + "/" + ((GridSize * GridSize) - MineAmount));
+        System.out.println("Mines: "+ mineAmount + "  Score: " + Score + "/" + ((gridSize * gridSize) - mineAmount));
         System.out.println("------------------------");
         System.out.print(ConsoleColor.RESET);
 
         //Map
-        for(int x = 0; x < GridSize; x++)
+        for(int x = 0; x < gridSize; x++)
         {
             //Coordinates
             if(x >= 10)
@@ -95,7 +93,7 @@ public class Grid {
             }
             else
             {
-                if (GridSize <= 10)
+                if (gridSize <= 10)
                 {
                     System.out.print(x + "| ");
                 }
@@ -105,32 +103,32 @@ public class Grid {
                 }
             }
 
-            for(int i = 0; i < GridSize; i++)
+            for(int i = 0; i < gridSize; i++)
             {
-                if (MineMap[x][i].getFlagged())
+                if (mineMap[x][i].getFlagged())
                 {
-                    if (MineMap[x][i].getSelected())
+                    if (mineMap[x][i].getSelected())
                     {
-                        System.out.print(ConsoleColor.GREEN + MineMap[x][i].getValue() + " " + ConsoleColor.RESET);
+                        System.out.print(ConsoleColor.GREEN + mineMap[x][i].getValue() + " " + ConsoleColor.RESET);
                     }
                     else
                     {
                         System.out.print(ConsoleColor.BLUE +"F" + " " + ConsoleColor.RESET);
                     }
                 }
-                else if (!MineMap[x][i].getSelected())
+                else if (!mineMap[x][i].getSelected())
                 {
                     System.out.print("#" + " ");
                 }
                 else
                 {
-                    if (MineMap[x][i].getMine())
+                    if (mineMap[x][i].getMine())
                     {
                         System.out.print(ConsoleColor.RED + "M" + " " + ConsoleColor.RESET);
                     }
                     else
                     {
-                        System.out.print(ConsoleColor.GREEN + MineMap[x][i].getValue() + " " + ConsoleColor.RESET);
+                        System.out.print(ConsoleColor.GREEN + mineMap[x][i].getValue() + " " + ConsoleColor.RESET);
                     }
                 }
             }
@@ -139,7 +137,7 @@ public class Grid {
 
 
         //Coordinates outline
-        if (GridSize <= 10)
+        if (gridSize <= 10)
         {
             System.out.print("  ");
         }
@@ -147,12 +145,12 @@ public class Grid {
         {
             System.out.print("    ");
         }
-        for(int i = 0; i < GridSize*2; i++)
+        for(int i = 0; i < gridSize *2; i++)
         {
             System.out.print("-");
         }
 
-        if (GridSize <= 10)
+        if (gridSize <= 10)
         {
             System.out.print("\n   ");
         }
@@ -161,16 +159,16 @@ public class Grid {
             System.out.print("\n    ");
         }
         //Grid values
-        for(int i = 0; i < GridSize; i++)
+        for(int i = 0; i < gridSize; i++)
         {
             System.out.print(i + " ");
         }
         System.out.println("\n");
     }
 
-    public boolean GameOver()
+    public boolean gameOver()
     {
-        return GameOver;
+        return gameOver;
     }
     public boolean Win() { return Won; }
 
@@ -178,60 +176,60 @@ public class Grid {
 
     public void Flag(int X, int Y)
     {
-        MineMap[X][Y].setFlagged();
-        if (MineMap[X][Y].getMine() && MineMap[X][Y].getFlagged())
+        mineMap[X][Y].setFlagged();
+        if (mineMap[X][Y].getMine() && mineMap[X][Y].getFlagged())
         {
             MinesFlagged++;
         }
-        if(MinesFlagged == MineAmount && Score == (GridSize * GridSize) - MineAmount)
+        if(MinesFlagged == mineAmount && Score == (gridSize * gridSize) - mineAmount)
         {
             Won = true;
         }
     }
 
-    public void UserInput(int X, int Y)
+    public void userInput(int X, int Y)
     {
-        if(MineMap[X][Y].getFlagged())
+        if(mineMap[X][Y].getFlagged())
         {
             System.out.println("You choose a flagged tile. un-flag the tile by flagging it again");
             return;
         }
         //Game Over
-        if (MineMap[X][Y].getMine())
+        if (mineMap[X][Y].getMine())
         {
-            MineMap[X][Y].setSelected();
-            GameOver = true;
+            mineMap[X][Y].setSelected();
+            gameOver = true;
             return;
         }
 
-        NumOfMoves++;
-        CheckValue(X,Y);
+        numOfMoves++;
+        checkValue(X,Y);
 
-        if(MinesFlagged == MineAmount && Score == (GridSize * GridSize) - MineAmount)
+        if(MinesFlagged == mineAmount && Score == (gridSize * gridSize) - mineAmount)
         {
             Won = true;
         }
     }
 
-    private void CheckValue(int X, int Y)
+    private void checkValue(int X, int Y)
     {
-        if(X < 0 || X >= GridSize || Y < 0 || Y >= GridSize || MineMap[X][Y].getSelected() || MineMap[X][Y].getFlagged())
+        if(X < 0 || X >= gridSize || Y < 0 || Y >= gridSize || mineMap[X][Y].getSelected() || mineMap[X][Y].getFlagged())
         {
             return;
         }
 
-        if (!MineMap[X][Y].getMine())
+        if (!mineMap[X][Y].getMine())
         {
-            MineMap[X][Y].setSelected();
+            mineMap[X][Y].setSelected();
             Score++;
         }
 
-        if (MineMap[X][Y].getValue() == '0')
+        if (mineMap[X][Y].getValue() == '0')
         {
-            CheckValue(X-1,Y);
-            CheckValue(X+1,Y);
-            CheckValue(X,Y+1);
-            CheckValue(X,Y-1);
+            checkValue(X-1,Y);
+            checkValue(X+1,Y);
+            checkValue(X,Y+1);
+            checkValue(X,Y-1);
         }
 
     }

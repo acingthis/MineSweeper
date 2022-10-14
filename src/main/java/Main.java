@@ -70,10 +70,10 @@ public class Main {
             }
             else
             {
-                Map.UserInput(Y,X);
+                Map.userInput(Y,X);
             }
 
-            if (Map.GameOver())
+            if (Map.gameOver())
             {
                 String LOSE = "GAME OVER";
                 System.out.print(ConsoleColor.RED);
@@ -115,7 +115,7 @@ public class Main {
                                     "                  __/ |                  \n" +
                                     "                 |___/ ");
                 System.out.println("\n" + WINNING + "\n");
-                System.out.println("Your score: " + Map.Score + " Moves Made: " + Map.NumOfMoves);
+                System.out.println("Your score: " + Map.Score + " Moves Made: " + Map.numOfMoves);
                 System.out.println("\n" + WINNING + "\n");
                 System.out.print(ConsoleColor.RESET);
                 break;
@@ -124,16 +124,16 @@ public class Main {
         while (!GameOver);
 
         //Scoring
-        FileManager ScoreBoard = new FileManager();
+        FileManager scoreBoard = new FileManager();
         System.out.print(ConsoleColor.BLUE);
-        System.out.println(ScoreBoard.LeaderBoard());
+        System.out.println(scoreBoard.LeaderBoard());
         System.out.print(ConsoleColor.RESET);
         if (Map.Win())
         {
             System.out.println("What is your Username?");
             System.out.print("> ");
             String Player = Scan.nextLine();
-            ScoreBoard.WriteToFile(Player,Map.NumOfMoves);
+            scoreBoard.WriteToFile(Player,Map.numOfMoves);
         }
 
 

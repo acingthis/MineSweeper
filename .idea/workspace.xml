@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a67e4c0a-4a41-4f3f-b096-4a59449c4a4a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MineSweep/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MineSweep/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MineSweep/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MineSweep/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GridTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GridTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MineSweep/FileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MineSweep/FileManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MineSweep/Grid.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MineSweep/Grid.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +45,14 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Robert\Documents\Work\AutomationTester\Java\Projects\Game\MavenMine\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TileTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="MavenMine" />
@@ -94,9 +100,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.TileTest" />
         <item itemvalue="JUnit.GridTest" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.GridTest.testFlag" />
         <item itemvalue="JUnit.TileTest.testSetValue" />
       </list>

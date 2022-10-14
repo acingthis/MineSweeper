@@ -14,8 +14,8 @@ public class FileManager {
     public FileManager()
     {
         try {
-            File ScoreBoard = new File(fileName);
-            if (ScoreBoard.createNewFile())
+            File scoreBoard = new File(fileName);
+            if (scoreBoard.createNewFile())
             {
                 System.out.println("Scoreboard has been made");
             }
@@ -23,18 +23,16 @@ public class FileManager {
         catch (IOException e)
         {
             System.out.println("ERROR making Scoreboard file");
-            e.printStackTrace();
         }
     }
 
     public final void WriteToFile(String UserName, int Moves)
     {
-        try(FileWriter ScoreBoard = new FileWriter(fileName)) {
+        try(FileWriter scoreBoard = new FileWriter(fileName)) {
             String Board = PlaceScore(UserName,Moves+1);
-            ScoreBoard.write(Board);
+            scoreBoard.write(Board);
         } catch (IOException e) {
             System.out.println("ERROR writing to Scoreboard");
-            e.printStackTrace();
         }finally {
             System.out.println("Scoreboard Updated");
         }
@@ -102,8 +100,8 @@ public class FileManager {
         int Counter = 0;
         try
         {
-            File ScoreBoard = new File(fileName);
-            Scanner myReader = new Scanner(ScoreBoard);
+            File scoreBoard = new File(fileName);
+            Scanner myReader = new Scanner(scoreBoard);
             while (myReader.hasNextLine())
             {
                 String data = myReader.nextLine();
@@ -115,7 +113,6 @@ public class FileManager {
         catch (FileNotFoundException e)
         {
             System.out.println("ERROR problem reading scoreboard file");
-            e.printStackTrace();
         }
 
         return Scores;
