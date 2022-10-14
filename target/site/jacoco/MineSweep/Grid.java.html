@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Grid.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MavenMine</a> &gt; <a href="index.source.html" class="el_package">MineSweep</a> &gt; <span class="el_source">Grid.java</span></div><h1>Grid.java</h1><pre class="source lang-java linenums">package MineSweep;
+import java.security.SecureRandom;
+
+public class Grid {
+
+    public Tile[][] mineMap;
+    public int mineAmount;
+    public int gridSize;
+
+    public int Score;
+    public int numOfMoves;
+
+<span class="fc" id="L13">    public boolean gameOver = false;</span>
+<span class="fc" id="L14">    public boolean Won = false;</span>
+
+    public Grid(int GridSize)
+<span class="fc" id="L17">    {</span>
+<span class="fc" id="L18">        this.Score = 0;</span>
+<span class="fc" id="L19">        this.numOfMoves = 0;</span>
+<span class="fc" id="L20">        mineMap = new Tile[GridSize][GridSize];</span>
+
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        for(int x = 0; x &lt; GridSize; x++)</span>
+        {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">            for(int i = 0; i &lt; GridSize; i++)</span>
+            {
+<span class="fc" id="L26">                mineMap[x][i] = new Tile();</span>
+            }
+        }
+<span class="fc" id="L29">        mineAmount = GridSize;</span>
+<span class="fc" id="L30">        this.gridSize = GridSize;</span>
+<span class="fc" id="L31">        createMines();</span>
+<span class="fc" id="L32">    }</span>
+
+    private void createMines()
+    {
+<span class="fc" id="L36">        SecureRandom rand = new SecureRandom();</span>
+
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        for(int i = 0; i &lt; mineAmount; i++)</span>
+        {
+<span class="fc" id="L40">            int X = rand.nextInt(gridSize);</span>
+<span class="fc" id="L41">            int Y = rand.nextInt(gridSize);</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">            while (mineMap[X][Y].getMine())</span>
+            {
+<span class="fc" id="L44">                X = rand.nextInt(gridSize);</span>
+<span class="fc" id="L45">                Y = rand.nextInt(gridSize);</span>
+            }
+<span class="fc" id="L47">            mineMap[X][Y].setMine();</span>
+<span class="fc" id="L48">            numberAroundMine(X,Y);</span>
+        }
+<span class="fc" id="L50">    }</span>
+
+    public void numberAroundMine(int X, int Y)
+    {
+<span class="fc" id="L54">        createNumbers(X-1,Y);</span>
+<span class="fc" id="L55">        createNumbers(X-1,Y-1);</span>
+<span class="fc" id="L56">        createNumbers(X,Y-1);</span>
+<span class="fc" id="L57">        createNumbers(X+1,Y-1);</span>
+<span class="fc" id="L58">        createNumbers(X+1,Y);</span>
+<span class="fc" id="L59">        createNumbers(X+1,Y+1);</span>
+<span class="fc" id="L60">        createNumbers(X,Y+1);</span>
+<span class="fc" id="L61">        createNumbers(X-1,Y+1);</span>
+<span class="fc" id="L62">    }</span>
+
+    private void createNumbers(int X, int Y)
+    {
+<span class="fc bfc" id="L66" title="All 8 branches covered.">        if(X &lt; 0 || X &gt;= gridSize || Y &lt; 0 || Y &gt;= gridSize)</span>
+        {
+<span class="fc" id="L68">            return;</span>
+        }
+
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (!mineMap[X][Y].getMine())</span>
+        {
+<span class="fc" id="L73">            mineMap[X][Y].setValue((char) (1 + (int) mineMap[X][Y].getValue()));</span>
+        }
+<span class="fc" id="L75">    }</span>
+
+    public void Print()
+    {
+        //Values
+<span class="nc" id="L80">        System.out.print(ConsoleColor.BLUE);</span>
+<span class="nc" id="L81">        System.out.println(&quot;------------------------&quot;);</span>
+<span class="nc" id="L82">        System.out.println(&quot;Mines: &quot;+ mineAmount + &quot;  Score: &quot; + Score + &quot;/&quot; + ((gridSize * gridSize) - mineAmount));</span>
+<span class="nc" id="L83">        System.out.println(&quot;------------------------&quot;);</span>
+<span class="nc" id="L84">        System.out.print(ConsoleColor.RESET);</span>
+
+        //Map
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        for(int x = 0; x &lt; gridSize; x++)</span>
+        {
+            //Coordinates
+<span class="nc bnc" id="L90" title="All 2 branches missed.">            if(x &gt;= 10)</span>
+            {
+<span class="nc" id="L92">                System.out.print(x + &quot;| &quot;);</span>
+            }
+            else
+            {
+<span class="nc bnc" id="L96" title="All 2 branches missed.">                if (gridSize &lt;= 10)</span>
+                {
+<span class="nc" id="L98">                    System.out.print(x + &quot;| &quot;);</span>
+                }
+                else
+                {
+<span class="nc" id="L102">                    System.out.print(&quot;0&quot; + x + &quot;| &quot;);</span>
+                }
+            }
+
+<span class="nc bnc" id="L106" title="All 2 branches missed.">            for(int i = 0; i &lt; gridSize; i++)</span>
+            {
+<span class="nc bnc" id="L108" title="All 2 branches missed.">                if (mineMap[x][i].getFlagged())</span>
+                {
+<span class="nc bnc" id="L110" title="All 2 branches missed.">                    if (mineMap[x][i].getSelected())</span>
+                    {
+<span class="nc" id="L112">                        System.out.print(ConsoleColor.GREEN + mineMap[x][i].getValue() + &quot; &quot; + ConsoleColor.RESET);</span>
+                    }
+                    else
+                    {
+<span class="nc" id="L116">                        System.out.print(ConsoleColor.BLUE +&quot;F&quot; + &quot; &quot; + ConsoleColor.RESET);</span>
+                    }
+                }
+<span class="nc bnc" id="L119" title="All 2 branches missed.">                else if (!mineMap[x][i].getSelected())</span>
+                {
+<span class="nc" id="L121">                    System.out.print(&quot;#&quot; + &quot; &quot;);</span>
+                }
+                else
+                {
+<span class="nc bnc" id="L125" title="All 2 branches missed.">                    if (mineMap[x][i].getMine())</span>
+                    {
+<span class="nc" id="L127">                        System.out.print(ConsoleColor.RED + &quot;M&quot; + &quot; &quot; + ConsoleColor.RESET);</span>
+                    }
+                    else
+                    {
+<span class="nc" id="L131">                        System.out.print(ConsoleColor.GREEN + mineMap[x][i].getValue() + &quot; &quot; + ConsoleColor.RESET);</span>
+                    }
+                }
+            }
+<span class="nc" id="L135">            System.out.print(&quot;\n&quot;);</span>
+        }
+
+
+        //Coordinates outline
+<span class="nc bnc" id="L140" title="All 2 branches missed.">        if (gridSize &lt;= 10)</span>
+        {
+<span class="nc" id="L142">            System.out.print(&quot;  &quot;);</span>
+        }
+        else
+        {
+<span class="nc" id="L146">            System.out.print(&quot;    &quot;);</span>
+        }
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        for(int i = 0; i &lt; gridSize *2; i++)</span>
+        {
+<span class="nc" id="L150">            System.out.print(&quot;-&quot;);</span>
+        }
+
+<span class="nc bnc" id="L153" title="All 2 branches missed.">        if (gridSize &lt;= 10)</span>
+        {
+<span class="nc" id="L155">            System.out.print(&quot;\n   &quot;);</span>
+        }
+        else
+        {
+<span class="nc" id="L159">            System.out.print(&quot;\n    &quot;);</span>
+        }
+        //Grid values
+<span class="nc bnc" id="L162" title="All 2 branches missed.">        for(int i = 0; i &lt; gridSize; i++)</span>
+        {
+<span class="nc" id="L164">            System.out.print(i + &quot; &quot;);</span>
+        }
+<span class="nc" id="L166">        System.out.println(&quot;\n&quot;);</span>
+<span class="nc" id="L167">    }</span>
+
+    public boolean gameOver()
+    {
+<span class="fc" id="L171">        return gameOver;</span>
+    }
+<span class="fc" id="L173">    public boolean Win() { return Won; }</span>
+
+<span class="fc" id="L175">    int MinesFlagged = 0;</span>
+
+    public void Flag(int X, int Y)
+    {
+<span class="fc" id="L179">        mineMap[X][Y].setFlagged();</span>
+<span class="pc bpc" id="L180" title="3 of 4 branches missed.">        if (mineMap[X][Y].getMine() &amp;&amp; mineMap[X][Y].getFlagged())</span>
+        {
+<span class="nc" id="L182">            MinesFlagged++;</span>
+        }
+<span class="pc bpc" id="L184" title="3 of 4 branches missed.">        if(MinesFlagged == mineAmount &amp;&amp; Score == (gridSize * gridSize) - mineAmount)</span>
+        {
+<span class="nc" id="L186">            Won = true;</span>
+        }
+<span class="fc" id="L188">    }</span>
+
+    public void userInput(int X, int Y)
+    {
+<span class="pc bpc" id="L192" title="1 of 2 branches missed.">        if(mineMap[X][Y].getFlagged())</span>
+        {
+<span class="nc" id="L194">            System.out.println(&quot;You choose a flagged tile. un-flag the tile by flagging it again&quot;);</span>
+<span class="nc" id="L195">            return;</span>
+        }
+        //Game Over
+<span class="pc bpc" id="L198" title="1 of 2 branches missed.">        if (mineMap[X][Y].getMine())</span>
+        {
+<span class="nc" id="L200">            mineMap[X][Y].setSelected();</span>
+<span class="nc" id="L201">            gameOver = true;</span>
+<span class="nc" id="L202">            return;</span>
+        }
+
+<span class="fc" id="L205">        numOfMoves++;</span>
+<span class="fc" id="L206">        checkValue(X,Y);</span>
+
+<span class="pc bpc" id="L208" title="3 of 4 branches missed.">        if(MinesFlagged == mineAmount &amp;&amp; Score == (gridSize * gridSize) - mineAmount)</span>
+        {
+<span class="nc" id="L210">            Won = true;</span>
+        }
+<span class="fc" id="L212">    }</span>
+
+    private void checkValue(int X, int Y)
+    {
+<span class="pc bpc" id="L216" title="1 of 12 branches missed.">        if(X &lt; 0 || X &gt;= gridSize || Y &lt; 0 || Y &gt;= gridSize || mineMap[X][Y].getSelected() || mineMap[X][Y].getFlagged())</span>
+        {
+<span class="fc" id="L218">            return;</span>
+        }
+
+<span class="pc bpc" id="L221" title="1 of 2 branches missed.">        if (!mineMap[X][Y].getMine())</span>
+        {
+<span class="fc" id="L223">            mineMap[X][Y].setSelected();</span>
+<span class="fc" id="L224">            Score++;</span>
+        }
+
+<span class="fc bfc" id="L227" title="All 2 branches covered.">        if (mineMap[X][Y].getValue() == '0')</span>
+        {
+<span class="fc" id="L229">            checkValue(X-1,Y);</span>
+<span class="fc" id="L230">            checkValue(X+1,Y);</span>
+<span class="fc" id="L231">            checkValue(X,Y+1);</span>
+<span class="fc" id="L232">            checkValue(X,Y-1);</span>
+        }
+
+<span class="fc" id="L235">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MavenMine</a> &gt; <a href="index.source.html" class="el_package">MineSweep</a> &gt; <span class="el_source">FileManager.java</span></div><h1>FileManager.java</h1><pre class="source lang-java linenums">package MineSweep;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Objects;
+import java.util.Scanner;
+
+public class FileManager {
+
+<span class="nc" id="L12">    String fileName = &quot;ScoreBoard.txt&quot;;</span>
+
+    public FileManager()
+<span class="nc" id="L15">    {</span>
+        try {
+<span class="nc" id="L17">            File scoreBoard = new File(fileName);</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">            if (scoreBoard.createNewFile())</span>
+            {
+<span class="nc" id="L20">                System.out.println(&quot;Scoreboard has been made&quot;);</span>
+            }
+        }
+<span class="nc" id="L23">        catch (IOException e)</span>
+        {
+<span class="nc" id="L25">            System.out.println(&quot;ERROR making Scoreboard file&quot;);</span>
+<span class="nc" id="L26">        }</span>
+<span class="nc" id="L27">    }</span>
+
+    public final void WriteToFile(String UserName, int Moves)
+    {
+<span class="nc" id="L31">        try(FileWriter scoreBoard = new FileWriter(fileName)) {</span>
+<span class="nc" id="L32">            String Board = PlaceScore(UserName,Moves+1);</span>
+<span class="nc" id="L33">            scoreBoard.write(Board);</span>
+<span class="nc" id="L34">        } catch (IOException e) {</span>
+<span class="nc" id="L35">            System.out.println(&quot;ERROR writing to Scoreboard&quot;);</span>
+        }finally {
+<span class="nc" id="L37">            System.out.println(&quot;Scoreboard Updated&quot;);</span>
+        }
+<span class="nc" id="L39">    }</span>
+
+    private String PlaceScore(String UserName, int Moves)
+    {
+<span class="nc" id="L43">        String[] Scores = ReadFile();</span>
+
+<span class="nc" id="L45">        String Replace = &quot;&quot;;</span>
+<span class="nc" id="L46">        String Store = &quot;&quot;;</span>
+        int x;
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        for (x = 0; x &lt; Scores.length-1; x++)</span>
+        {
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            if (Moves &lt; Integer.parseInt(Scores[x].substring(Scores[x].indexOf(&quot;:&quot;)+2)))</span>
+            {
+<span class="nc" id="L52">                Replace = Scores[x];</span>
+<span class="nc" id="L53">                Scores[x] = UserName + &quot; : &quot; + Moves;</span>
+<span class="nc" id="L54">                break;</span>
+            }
+        }
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        for (int i = x; i &lt; Scores.length-1;i++)</span>
+        {
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            if (!Objects.equals(Replace, &quot;&quot;))</span>
+            {
+<span class="nc" id="L61">                Store = Scores[i];</span>
+<span class="nc" id="L62">                Scores[i] = Replace;</span>
+<span class="nc" id="L63">                Replace = Store;</span>
+            }
+        }
+
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        if (!Objects.equals(Replace, &quot;&quot;))</span>
+        {
+<span class="nc" id="L69">            Scores[Scores.length-1] = Replace;</span>
+        }
+
+<span class="nc" id="L72">        String Board = &quot;&quot;;</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        for (String score:Scores)</span>
+        {
+<span class="nc" id="L75">            Board = Board + score + &quot;\n&quot;;</span>
+        }
+<span class="nc" id="L77">        return Board;</span>
+    }
+
+    public String LeaderBoard()
+    {
+<span class="nc" id="L82">        String[] Scores = ReadFile();</span>
+
+<span class="nc" id="L84">        String Board =  &quot;Player : Moves\n---------------\n&quot;;</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        for (String score:Scores)</span>
+        {
+<span class="nc bnc" id="L87" title="All 2 branches missed.">            if (score == null)</span>
+            {
+<span class="nc" id="L89">                return Board;</span>
+            }
+<span class="nc" id="L91">            Board = Board + score + &quot;\n&quot;;</span>
+        }
+
+<span class="nc" id="L94">        return Board;</span>
+    }
+
+    public String[] ReadFile()
+    {
+<span class="nc" id="L99">        String[] Scores = new String[10];</span>
+<span class="nc" id="L100">        int Counter = 0;</span>
+        try
+        {
+<span class="nc" id="L103">            File scoreBoard = new File(fileName);</span>
+<span class="nc" id="L104">            Scanner myReader = new Scanner(scoreBoard);</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">            while (myReader.hasNextLine())</span>
+            {
+<span class="nc" id="L107">                String data = myReader.nextLine();</span>
+<span class="nc" id="L108">                Scores[Counter] = data;</span>
+<span class="nc" id="L109">                Counter++;</span>
+<span class="nc" id="L110">            }</span>
+<span class="nc" id="L111">            myReader.close();</span>
+        }
+<span class="nc" id="L113">        catch (FileNotFoundException e)</span>
+        {
+<span class="nc" id="L115">            System.out.println(&quot;ERROR problem reading scoreboard file&quot;);</span>
+<span class="nc" id="L116">        }</span>
+
+<span class="nc" id="L118">        return Scores;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -10,11 +10,11 @@ public class Main {
 
     private static void UserInput()
     {
-        int GridSize = 10;
+        int gridSize = 10;
 
-        Grid Map = new Grid(GridSize);
+        Grid Map = new Grid(gridSize);
 
-        boolean GameOver = false;
+        boolean gameOver = false;
 
         Scanner Scan = new Scanner(System.in);
         boolean Flag;
@@ -55,9 +55,9 @@ public class Main {
                     System.out.println(ConsoleColor.RESET);
                 }
 
-                if (Y >= GridSize || X >= GridSize)
+                if (Y >= gridSize || X >= gridSize)
                 {
-                    System.out.println("An index is out of bounds, the grid goes from 0-" + (GridSize-1) + "\n");
+                    System.out.println("An index is out of bounds, the grid goes from 0-" + (gridSize -1) + "\n");
                     X = -1;
                     Y = -1;
                 }
@@ -95,7 +95,7 @@ public class Main {
                                     " _____.,-#%&$@%#&#~,._____");
                 System.out.println("\n" + LOSE + "\n");
                 System.out.print(ConsoleColor.RESET);
-                GameOver = true;
+                gameOver = true;
             }
             else if (Map.Win())
             {
@@ -121,7 +121,7 @@ public class Main {
                 break;
             }
         }
-        while (!GameOver);
+        while (!gameOver);
 
         //Scoring
         FileManager scoreBoard = new FileManager();

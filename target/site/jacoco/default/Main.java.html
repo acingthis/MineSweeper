@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MavenMine</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">import MineSweep.*;
+import java.util.Scanner;
+
+<span class="nc" id="L4">public class Main {</span>
+
+    public static void main(String[] args) {
+
+<span class="nc" id="L8">        UserInput();</span>
+<span class="nc" id="L9">    }</span>
+
+    private static void UserInput()
+    {
+<span class="nc" id="L13">        int gridSize = 10;</span>
+
+<span class="nc" id="L15">        Grid Map = new Grid(gridSize);</span>
+
+<span class="nc" id="L17">        boolean gameOver = false;</span>
+
+<span class="nc" id="L19">        Scanner Scan = new Scanner(System.in);</span>
+        boolean Flag;
+
+        do {
+<span class="nc" id="L23">            Map.Print();</span>
+
+<span class="nc" id="L25">            Flag = false;</span>
+            int X;
+            int Y;
+            do
+            {
+                try {
+
+<span class="nc" id="L32">                    System.out.println(&quot;Do you wish to flag something?&quot;);</span>
+<span class="nc" id="L33">                    System.out.print(&quot;&gt; &quot;);</span>
+<span class="nc" id="L34">                    String Flagging = Scan.nextLine();</span>
+
+<span class="nc bnc" id="L36" title="All 2 branches missed.">                    Flag = switch (Flagging.toLowerCase()) {</span>
+<span class="nc" id="L37">                        case &quot;yes&quot;,&quot;flag&quot;,&quot;y&quot;,&quot;f&quot; -&gt; true;</span>
+<span class="nc" id="L38">                        default -&gt; false;</span>
+                    };
+
+<span class="nc" id="L41">                    System.out.println(&quot;Please enter X Coordinate:&quot;);</span>
+<span class="nc" id="L42">                    System.out.print(&quot;&gt; &quot;);</span>
+<span class="nc" id="L43">                    X = Integer.parseInt(Scan.nextLine());</span>
+
+<span class="nc" id="L45">                    System.out.println(&quot;Please enter Y Coordinate:&quot;);</span>
+<span class="nc" id="L46">                    System.out.print(&quot;&gt; &quot;);</span>
+<span class="nc" id="L47">                    Y = Integer.parseInt(Scan.nextLine());</span>
+                }
+<span class="nc" id="L49">                catch (Exception e)</span>
+                {
+<span class="nc" id="L51">                    System.out.println(ConsoleColor.RED);</span>
+<span class="nc" id="L52">                    System.out.println(&quot;\nThere has been an issue please try again\n&quot;);</span>
+<span class="nc" id="L53">                    X = -1;</span>
+<span class="nc" id="L54">                    Y = -1;</span>
+<span class="nc" id="L55">                    System.out.println(ConsoleColor.RESET);</span>
+<span class="nc" id="L56">                }</span>
+
+<span class="nc bnc" id="L58" title="All 4 branches missed.">                if (Y &gt;= gridSize || X &gt;= gridSize)</span>
+                {
+<span class="nc" id="L60">                    System.out.println(&quot;An index is out of bounds, the grid goes from 0-&quot; + (gridSize -1) + &quot;\n&quot;);</span>
+<span class="nc" id="L61">                    X = -1;</span>
+<span class="nc" id="L62">                    Y = -1;</span>
+                }
+            }
+<span class="nc bnc" id="L65" title="All 4 branches missed.">            while(X &lt; 0 &amp;&amp; Y &lt; 0);</span>
+
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            if (Flag)</span>
+            {
+<span class="nc" id="L69">                Map.Flag(Y,X);</span>
+            }
+            else
+            {
+<span class="nc" id="L73">                Map.userInput(Y,X);</span>
+            }
+
+<span class="nc bnc" id="L76" title="All 2 branches missed.">            if (Map.gameOver())</span>
+            {
+<span class="nc" id="L78">                String LOSE = &quot;GAME OVER&quot;;</span>
+<span class="nc" id="L79">                System.out.print(ConsoleColor.RED);</span>
+<span class="nc" id="L80">                System.out.println(&quot;\n&quot; + LOSE + &quot;\n&quot;);</span>
+<span class="nc" id="L81">                System.out.print(ConsoleColor.RESET);</span>
+<span class="nc" id="L82">                Map.Print();</span>
+<span class="nc" id="L83">                System.out.print(ConsoleColor.RED);</span>
+<span class="nc" id="L84">                System.out.println(&quot;\n&quot; + LOSE + &quot;\n&quot;);</span>
+<span class="nc" id="L85">                System.out.println( &quot;     _.-^^---....,,--       \n&quot; +</span>
+                                    &quot; _--                 ---_  \n&quot; +
+                                    &quot;&lt;                        &gt;)\n&quot; +
+                                    &quot;|                         | \n&quot; +
+                                    &quot; \\._                   _./  \n&quot; +
+                                    &quot;    ```--. . , ; .--'''       \n&quot; +
+                                    &quot;          | |   |             \n&quot; +
+                                    &quot;       .-=||  | |=-.   \n&quot; +
+                                    &quot;       `-=#$%&amp;%$#=-'   \n&quot; +
+                                    &quot;          | ;  :|     \n&quot; +
+                                    &quot; _____.,-#%&amp;$@%#&amp;#~,._____&quot;);
+<span class="nc" id="L96">                System.out.println(&quot;\n&quot; + LOSE + &quot;\n&quot;);</span>
+<span class="nc" id="L97">                System.out.print(ConsoleColor.RESET);</span>
+<span class="nc" id="L98">                gameOver = true;</span>
+<span class="nc" id="L99">            }</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">            else if (Map.Win())</span>
+            {
+<span class="nc" id="L102">                String WINNING = &quot;YOU WIN&quot;;</span>
+<span class="nc" id="L103">                System.out.print(ConsoleColor.GREEN);</span>
+<span class="nc" id="L104">                System.out.println(&quot;\n&quot; + WINNING + &quot;\n&quot;);</span>
+<span class="nc" id="L105">                Map.Print();</span>
+<span class="nc" id="L106">                System.out.print(ConsoleColor.RESET);</span>
+<span class="nc" id="L107">                System.out.print(ConsoleColor.GREEN);</span>
+<span class="nc" id="L108">                System.out.println(&quot;\n&quot; + WINNING + &quot;\n&quot;);</span>
+<span class="nc" id="L109">                System.out.println( &quot;                                 _       \n&quot; +</span>
+                                    &quot;                                | |      \n&quot; +
+                                    &quot;  ___ ___  _ __   __ _ _ __ __ _| |_ ___ \n&quot; +
+                                    &quot; / __/ _ \\| '_ \\ / _` | '__/ _` | __/ __|\n&quot; +
+                                    &quot;| (_| (_) | | | | (_| | | | (_| | |_\\__ \\\n&quot; +
+                                    &quot; \\___\\___/|_| |_|\\__, |_|  \\__,_|\\__|___/\n&quot; +
+                                    &quot;                  __/ |                  \n&quot; +
+                                    &quot;                 |___/ &quot;);
+<span class="nc" id="L117">                System.out.println(&quot;\n&quot; + WINNING + &quot;\n&quot;);</span>
+<span class="nc" id="L118">                System.out.println(&quot;Your score: &quot; + Map.Score + &quot; Moves Made: &quot; + Map.numOfMoves);</span>
+<span class="nc" id="L119">                System.out.println(&quot;\n&quot; + WINNING + &quot;\n&quot;);</span>
+<span class="nc" id="L120">                System.out.print(ConsoleColor.RESET);</span>
+<span class="nc" id="L121">                break;</span>
+            }
+        }
+<span class="nc bnc" id="L124" title="All 2 branches missed.">        while (!gameOver);</span>
+
+        //Scoring
+<span class="nc" id="L127">        FileManager scoreBoard = new FileManager();</span>
+<span class="nc" id="L128">        System.out.print(ConsoleColor.BLUE);</span>
+<span class="nc" id="L129">        System.out.println(scoreBoard.LeaderBoard());</span>
+<span class="nc" id="L130">        System.out.print(ConsoleColor.RESET);</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        if (Map.Win())</span>
+        {
+<span class="nc" id="L133">            System.out.println(&quot;What is your Username?&quot;);</span>
+<span class="nc" id="L134">            System.out.print(&quot;&gt; &quot;);</span>
+<span class="nc" id="L135">            String Player = Scan.nextLine();</span>
+<span class="nc" id="L136">            scoreBoard.WriteToFile(Player,Map.numOfMoves);</span>
+        }
+
+
+        //play again?
+        boolean Play;
+<span class="nc" id="L142">        System.out.println(&quot;Do you want to play again?&quot;);</span>
+<span class="nc" id="L143">        System.out.print(&quot;&gt; &quot;);</span>
+<span class="nc" id="L144">        String Again = Scan.nextLine();</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">        Play = switch (Again.toLowerCase()) {</span>
+<span class="nc" id="L146">            case &quot;yes&quot;,&quot;y&quot; -&gt; true;</span>
+<span class="nc" id="L147">            default -&gt; false;</span>
+        };
+
+<span class="nc bnc" id="L150" title="All 2 branches missed.">        if (Play)</span>
+        {
+<span class="nc" id="L152">            UserInput();</span>
+        }
+<span class="nc" id="L154">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
